@@ -1,0 +1,38 @@
+{
+  "name": "customizable-caching-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon index.ts",
+    "test": "jest --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eshaansinghparihar/customizable-caching-api.git"
+  },
+  "keywords": [
+    "Caching",
+    "API",
+    "Server",
+    "Side",
+    "Database",
+    "Design"
+  ],
+  "author": "Eshan Singh Parihar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eshaansinghparihar/customizable-caching-api/issues"
+  },
+  "homepage": "https://github.com/eshaansinghparihar/customizable-caching-api#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
+  }
+}

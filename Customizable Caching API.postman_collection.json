@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "1b978f0b-2fa3-40c1-9d9c-b8e9e274b0f0",
+		"name": "Customizable Caching API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11968635"
+	},
+	"item": [
+		{
+			"name": "service-health",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/health",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "echo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"John Doe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostname}}/echo",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"echo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sys-time",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/time",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"time"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
