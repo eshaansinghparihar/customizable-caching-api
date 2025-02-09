@@ -74,6 +74,496 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "cache",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\" : \"12345678101112131415\",\n    \"value\" : {\n        \"name\" : \"John Doe\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostname}}/cache",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"cache"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "cache - Added Successfully",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\" : \"1234567810111213\",\n    \"value\" : {\n        \"name\" : \"John Doe\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/cache",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"cache"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"73-FNhqOb1/ltewhhGr4VWP4O3UzIM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Feb 2025 07:18:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"key\": \"1234567810111213\",\n    \"value\": {\n        \"name\": \"John Doe\"\n    },\n    \"timestamp\": 1739085534238,\n    \"message\": \"Set Cache Successfully\"\n}"
+				},
+				{
+					"name": "cache - Cache Full",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\" : \"12345678101112131415\",\n    \"value\" : {\n        \"name\" : \"John Doe\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/cache",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"cache"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"37-8rg6hAg/t79SWb7U5M3mQmnPVcI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Feb 2025 07:19:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Cache Already Full - Cache Hit Maximum Size\"\n}"
+				},
+				{
+					"name": "cache - Key and Value Required",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\" : {\n        \"name\" : \"John Doe\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/cache",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"cache"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26-yZlww+WInAnZi959TA46WrIZJYA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Feb 2025 07:20:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Key and value are required\"\n}"
+				}
+			]
+		},
+		{
+			"name": "cache/{key}",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/cache/:key",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"cache",
+						":key"
+					],
+					"variable": [
+						{
+							"key": "key",
+							"value": "12345678101112131415"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "cache/{key} - Cache Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/cache/:key",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"cache",
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": "12345678101112131415"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "119"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"77-Uq1I3+l6aOGMTd9HOr9utdeJoR8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Feb 2025 07:25:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"key\": \"12345678101112131415\",\n    \"value\": {\n        \"name\": \"John Doe\"\n    },\n    \"timestamp\": 1739085913575,\n    \"message\": \"Get Cache Successfully\"\n}"
+				},
+				{
+					"name": "cache/{key} - Cache Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/cache/:key",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"cache",
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": "1234567810111213141516"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "27"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1b-HGAMjdahl3y8oizJwM0TuzEDpOA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Feb 2025 07:27:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Cache Not Found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "cache/{key}",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/cache/:key",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"cache",
+						":key"
+					],
+					"variable": [
+						{
+							"key": "key",
+							"value": "12345678101112131415"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "cache/{key} - Deleted Successfully",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/cache/:key",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"cache",
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": "12345678101112131415"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-N5Pz4rbIDFrGp9HvXX6W1wjAyzI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Feb 2025 07:28:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "cache/{key} - Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/cache/:key",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"cache",
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": "12345678101112131415"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "27"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1b-HGAMjdahl3y8oizJwM0TuzEDpOA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Feb 2025 07:29:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Cache Not Found\"\n}"
+				}
+			]
 		}
 	]
 }
