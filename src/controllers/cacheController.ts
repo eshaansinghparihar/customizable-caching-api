@@ -33,7 +33,6 @@ export class CacheController{
 
       public async set(key : string, value : any){
         const response =  await this.cacheService.setCache(key, value, this.cache ,this.isCacheFull());
-        console.log(this.maxSize, this.isCacheFull(), this.cache, this.cache.size);
         return response;
       }
 
