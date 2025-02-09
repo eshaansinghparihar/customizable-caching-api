@@ -282,6 +282,66 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"error\": \"Key and value are required\"\n}"
+				},
+				{
+					"name": "cache - Update Successfully",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\" : \"12345678101112131415\",\n    \"value\" : {\n        \"name\" : \"John Doe\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/cache",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"cache"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "123"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7b-07VCDijYpGded/symzDTrGpclwI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 09 Feb 2025 07:54:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"key\": \"12345678101112131415\",\n    \"value\": {\n        \"name\": \"John Doe\"\n    },\n    \"timestamp\": 1739087677916,\n    \"message\": \"Updated Cache Successfully\"\n}"
 				}
 			]
 		},
