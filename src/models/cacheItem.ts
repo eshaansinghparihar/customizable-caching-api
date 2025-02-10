@@ -4,9 +4,6 @@ export interface CacheItem {
     timestamp?: number;
 }
 
-export interface ICacheResponse {
-    key : string;
-    value : any;
-    timestamp? : number;
+export interface ICacheResponse extends Partial<CacheItem>{
     message? : string;
 }
