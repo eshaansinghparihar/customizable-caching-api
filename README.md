@@ -1,4 +1,10 @@
 # customizable-caching-api
+
+![Test Coverage](https://img.shields.io/badge/coverage-98.21%25-brightgreen)
+![TypeScript](https://img.shields.io/badge/code%20written%20in-Typescript-blue)
+![Jest](https://img.shields.io/badge/testing%20library-Jest-yellow)
+![Node.js](https://img.shields.io/badge/node%20version-v20.18.0-orange)
+
 # Overview
 A simple and efficient in-memory caching API built with Node.js and TypeScript. This API provides basic caching functionality with a configurable maximum size limit.
 
