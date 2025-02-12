@@ -1,4 +1,10 @@
 # customizable-caching-api
+
+![Test Coverage](https://img.shields.io/badge/coverage-98.21%25-brightgreen)
+![TypeScript](https://img.shields.io/badge/code%20written%20in-Typescript-blue)
+![Jest](https://img.shields.io/badge/testing%20library-Jest-yellow)
+![Node.js](https://img.shields.io/badge/node%20version-v20.18.0-orange)
+
 # Overview
 A simple and efficient in-memory caching API built with Node.js and TypeScript. This API provides basic caching functionality with a configurable maximum size limit.
 
@@ -92,6 +98,10 @@ Removes a key-value pair from the cache.
     ```bash
     npm run test
 
+## Test Coverage
+
+[View Test Coverage Report](https://eshaansinghparihar.github.io/customizable-caching-api/)
+
 ## Deployment
 
 This project has been deployed on https://customizable-caching-api-ncv1.onrender.com.
@@ -103,4 +113,3 @@ A Postman Collection is included in the repository for easy access to the endpoi
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
