@@ -98,6 +98,10 @@ Removes a key-value pair from the cache.
     ```bash
     npm run test
 
+## Test Coverage
+
+[View Test Coverage Report](https://eshaansinghparihar.github.io/customizable-caching-api/)
+
 ## Deployment
 
 This project has been deployed on https://customizable-caching-api-ncv1.onrender.com.
