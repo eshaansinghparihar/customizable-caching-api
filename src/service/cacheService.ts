@@ -1,29 +1,42 @@
 import Redis from "ioredis";
 import { CacheError } from "../middlewares/errors/cacheError";
 import { CacheItem, ICacheResponse } from "../models/cacheItem";
+import { RedisClient } from "../clients/redisClient";
 
 export class CacheService{
-    private readonly redis : Redis;
-    constructor(redisClient: Redis){
-        this.redis = redisClient
+    private readonly redisClient : Redis;
+    private maxSize : number;
+    constructor(){
+        this.redisClient = RedisClient.getInstance().getRedisClient();
+        this.maxSize = Number(process.env.MAX_CACHE_SIZE) || 1;
     }
 
-    async setCache(key: string, value: any, isCacheFull : boolean) : Promise<ICacheResponse|undefined>{
+    async isCacheFull() : Promise<boolean>{
+        const size = await this.redisClient.dbsize();
+        if(size < this.maxSize){
+            return false;
+        }
+        return true;
+      }
+
+    async setCache(key: string, value: any) : Promise<ICacheResponse|undefined>{
 
         const serializedValue = typeof value === 'object' ? 
             JSON.stringify(value) : value.toString();
 
         const cacheItem: CacheItem = { key, value : serializedValue, timestamp : Date.now(), lastAccessed: Date.now(), accessCount: 1 };
 
-        const exists = await this.redis.exists(key);
+        const exists = await this.redisClient.exists(key);
 
         if (exists) {
-            await this.redis.hset(key, cacheItem)
+            await this.redisClient.hset(key, cacheItem)
             return {...cacheItem, value: value, message: 'Updated Cache Successfully'};
         }
 
+        const isCacheFull = await this.isCacheFull();
+
         if(!isCacheFull){
-            await this.redis.hset(key, cacheItem)
+            await this.redisClient.hset(key, cacheItem)
             return {...cacheItem, value: value, message : 'Set Cache Successfully'};
         }
         else{
@@ -32,9 +45,9 @@ export class CacheService{
     }
 
     async getCache(key: string) : Promise<ICacheResponse|undefined> {
-        const exists = await this.redis.exists(key);
+        const exists = await this.redisClient.exists(key);
         if(exists){
-            const cacheItem : CacheItem = await this.redis.hgetall(key) as unknown as CacheItem;
+            const cacheItem : CacheItem = await this.redisClient.hgetall(key) as unknown as CacheItem;
 
             try {
                 cacheItem.value = JSON.parse(cacheItem.value);
@@ -45,7 +58,7 @@ export class CacheService{
             const serializedValue = typeof cacheItem.value === 'object' ? 
             JSON.stringify(cacheItem.value) : cacheItem.value.toString();
 
-            await this.redis.hset(key, {
+            await this.redisClient.hset(key, {
                 ...cacheItem,
                 value : serializedValue,
                 lastAccessed: Date.now(),
@@ -59,9 +72,9 @@ export class CacheService{
     }
 
     async deleteCache(key: string) {
-        const exists = await this.redis.exists(key);
+        const exists = await this.redisClient.exists(key);
         if(exists){
-            await this.redis.del(key);
+            await this.redisClient.del(key);
             return {message : 'Delete Cache Successfully'};
         }
         else{
