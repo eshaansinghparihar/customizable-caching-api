@@ -85,7 +85,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"key\" : \"12345678101112131415\",\n    \"value\" : {\n        \"name\" : \"John Doe\"\n    }\n}",
+					"raw": "{\n    \"key\" : \"12345678101112131415\",\n    \"value\" : {\n        \"name\" : \"John Doe\",\n        \"city\" : \"New Jersey\",\n        \"drives\" : \"Supra\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
